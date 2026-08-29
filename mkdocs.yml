@@ -1,0 +1,51 @@
+site_name: Open Notebook Lab
+site_description: Collaborative course and subject knowledge repository.
+repo_name: OpenNotebookLab/notes
+repo_url: https://github.com/OpenNotebookLab/notes
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - fenced_code
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_css:
+  - stylesheets/print.css
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - javascripts/mermaid-init.js
+
+nav:
+  - Home: index.md
+  - Courses:
+      - Overview: courses/index.md
+      - Example Course:
+          - Course Home: courses/example-course/index.md
+          - Topic 01: courses/example-course/topics/01-example-topic.md
+          - Review: courses/example-course/review.md
+          - Cheat Sheet: courses/example-course/cheatsheet.md
+          - References: courses/example-course/references.md
+  - Subjects:
+      - Overview: subjects/index.md
