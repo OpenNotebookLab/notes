@@ -41,11 +41,17 @@ nav:
   - Home: index.md
   - Courses:
       - Overview: courses/index.md
-      - Example Course:
-          - Course Home: courses/example-course/index.md
-          - Topic 01: courses/example-course/topics/01-example-topic.md
-          - Review: courses/example-course/review.md
-          - Cheat Sheet: courses/example-course/cheatsheet.md
-          - References: courses/example-course/references.md
+      - Deep Learning:
+          - Course Home: courses/deep-learning/index.md
+          - Topic 01: courses/deep-learning/topics/01-topic-placeholder.md
+          - Review: courses/deep-learning/review.md
+          - Cheat Sheet: courses/deep-learning/cheatsheet.md
+          - References: courses/deep-learning/references.md
+      - Reinforcement Learning:
+          - Course Home: courses/reinforcement-learning/index.md
+          - Topic 01: courses/reinforcement-learning/topics/01-topic-placeholder.md
+          - Review: courses/reinforcement-learning/review.md
+          - Cheat Sheet: courses/reinforcement-learning/cheatsheet.md
+          - References: courses/reinforcement-learning/references.md
   - Subjects:
       - Overview: subjects/index.md
