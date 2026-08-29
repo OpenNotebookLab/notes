@@ -1,0 +1,36 @@
+@media print {
+  .md-header,
+  .md-tabs,
+  .md-sidebar,
+  .md-footer,
+  .md-nav,
+  .md-source,
+  .md-top,
+  .md-search,
+  .md-content__button {
+    display: none !important;
+  }
+
+  .md-main__inner {
+    margin: 0;
+  }
+
+  .md-grid {
+    max-width: 100%;
+  }
+
+  .md-content {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  table,
+  pre,
+  blockquote {
+    page-break-inside: avoid;
+  }
+}
