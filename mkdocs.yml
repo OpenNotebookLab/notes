@@ -18,6 +18,9 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - tables
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
   - fenced_code
   - pymdownx.highlight
   - pymdownx.inlinehilite
@@ -43,6 +46,7 @@ nav:
       - Overview: courses/index.md
       - Deep Learning:
           - Course Home: courses/deep-learning/index.md
+          - Math Foundations: courses/deep-learning/topics/math-foundations.md
           - Topic 01: courses/deep-learning/topics/01-topic-placeholder.md
           - Review: courses/deep-learning/review.md
           - Cheat Sheet: courses/deep-learning/cheatsheet.md

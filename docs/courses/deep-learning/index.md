@@ -15,7 +15,8 @@ last_reviewed:
 
 ## Topics
 
-1. [Topic 01 — Placeholder](topics/01-topic-placeholder.md)
+1. [Math Foundations](topics/math-foundations.md)
+2. [Topic 01 — Placeholder](topics/01-topic-placeholder.md)
 
 ## Companion pages
 
