@@ -217,20 +217,63 @@ Quick reference for the mathematics used in model construction, backpropagation,
 
 === "Information theory & numerical stability"
 
-    ## Losses and finite precision
+    ## Entropy, cross-entropy, and KL divergence
 
-    Entropy, cross-entropy, and KL divergence are:
+    Let \(p=(p_1,\ldots,p_k)\) and \(q=(q_1,\ldots,q_k)\) be probability distributions over the same outcomes. Each probability is non-negative and the probabilities sum to one. By convention, \(0\log 0=0\); a zero-probability outcome contributes nothing to entropy or KL divergence.
+
+    ### Entropy: uncertainty in one distribution
+
+    **Meaning:** Entropy measures how uncertain or unpredictable a distribution is.
+
+    **Formula:**
 
     \[
-    H(p)=-\sum_ip_i\log p_i,\qquad
-    H(p,q)=-\sum_ip_i\log q_i,
+    H(p)=-\sum_{i=1}^k p_i\log p_i.
     \]
+
+    **Use:** It measures the information content of a random variable and helps describe the uncertainty in a model's predictions.
+
+    **Important properties:** \(H(p)\ge0\); it is zero for a deterministic distribution; for \(k\) outcomes it is largest for the uniform distribution, with maximum \(\log k\); and it is concave in \(p\). The log base determines the units: base 2 gives bits, while natural log gives nats.
+
+    ### Cross-entropy: cost of using the wrong distribution
+
+    **Meaning:** Cross-entropy measures how well a predicted distribution \(q\) represents outcomes generated from the true distribution \(p\).
+
+    **Formula:**
 
     \[
-    D_{KL}(p\|q)=\sum_ip_i\log\frac{p_i}{q_i}.
+    H(p,q)=-\sum_{i=1}^k p_i\log q_i.
     \]
 
-    KL divergence is non-negative but not symmetric. Softmax maps logits to probabilities:
+    **Use:** It is the standard classification loss. With a one-hot target, it becomes \(-\log q_y\), so assigning low probability to the correct class produces a large penalty.
+
+    **Important properties:** \(H(p,q)\ge H(p)\), with equality only when \(p=q\); it is not symmetric; and it can become infinite when \(q_i=0\) for an outcome with \(p_i>0\). It is not itself a distance.
+
+    ### KL divergence: information lost by approximation
+
+    **Meaning:** KL divergence measures how different a reference distribution \(p\) is from an approximating distribution \(q\).
+
+    **Formula:**
+
+    \[
+    D_{KL}(p\|q)=\sum_{i=1}^k p_i\log\frac{p_i}{q_i}.
+    \]
+
+    **Use:** It is used to compare distributions, regularize model predictions, and measure how much an approximate probability model departs from a target or prior.
+
+    **Important properties:** \(D_{KL}(p\|q)\ge0\), and it equals zero only when \(p=q\); it is not symmetric, so \(D_{KL}(p\|q)\ne D_{KL}(q\|p)\) in general; it does not satisfy the triangle inequality; and it can be infinite when \(q_i=0\) where \(p_i>0\).
+
+    ### Relationship
+
+    \[
+    H(p,q)=H(p)+D_{KL}(p\|q).
+    \]
+
+    Since \(H(p)\) is fixed when the target distribution is fixed, minimizing cross-entropy with respect to \(q\) is equivalent to minimizing \(D_{KL}(p\|q)\).
+
+    ### Softmax and numerical stability
+
+    Softmax maps logits to probabilities:
 
     \[
     s_i=\frac{e^{z_i}}{\sum_je^{z_j}}.
